@@ -10,9 +10,13 @@ const Cart = (props) => {
   const totalAmount = `$${cartctx.totalAmount}`;
   const hasItem = cartctx.item.length > 0;
 
-  const addItemHandler = (item) => {};
+  const addItemHandler = (item) => {
+    cartctx.addItem({ ...item, amount: 1 });
+  };
 
-  const removeItemHandler = (id) => {};
+  const removeItemHandler = (id) => {
+    cartctx.removeItem(id);
+  };
 
   const cartItems = (
     <ul>
@@ -23,15 +27,15 @@ const Cart = (props) => {
           price={item.price}
           amount={item.amount}
           onRemove={removeItemHandler.bind(null, item.id)}
-          onAdd={addItemHandler}
+          onAdd={addItemHandler.bind(null, item)}
         />
       ))}
     </ul>
   );
 
   return (
-    <Modal Close={props.Close} className={classes["cart-items"]}>
-      {cartItems}
+    <Modal Close={props.Close}>
+      <div className={classes["cart-items"]}>{cartItems}</div>
       <div className={classes.total}>
         <span>Total Amount</span>
         <span>{totalAmount}</span>
