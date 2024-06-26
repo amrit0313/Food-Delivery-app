@@ -5,25 +5,25 @@ const DUMMY_MEALS = [
   {
     id: "m1",
     name: "Mo:Mo",
-    description: "Finest fish and veggies",
+    description: "Finely covered, you will love it ",
     price: 22.99,
   },
   {
     id: "m2",
     name: "Chowmein",
-    description: "A german specialty!",
+    description: "A long thread of memories",
     price: 16.5,
   },
   {
     id: "m3",
     name: "Pizza",
-    description: "American, raw, meaty",
+    description: "rounded off, look up to it",
     price: 12.99,
   },
   {
     id: "m4",
     name: "Burger",
-    description: "Healthy...and green...",
+    description: "Healthy..and tasty, you what that is",
     price: 18.99,
   },
 ];
