@@ -10,7 +10,7 @@ const Availabe = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(
-        "https://react-http-9364c-default-rtdb.firebaseio.com/meals.jso"
+        "https://react-http-9364c-default-rtdb.firebaseio.com/meals.json"
       );
 
       if (!response.ok) {
