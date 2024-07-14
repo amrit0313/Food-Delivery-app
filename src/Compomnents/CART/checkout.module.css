@@ -1,6 +1,6 @@
 .form {
   margin: 1rem 0;
-  height: 17rem;
+  height: 19rem;
   overflow: auto;
 }
 
@@ -25,6 +25,10 @@
 .control input:focus {
   outline: none;
   border-color: #4d90fe;
+}
+.control .invalid {
+  color: red;
+  background-color: #f8d7da;
 }
 
 .actions {
