@@ -28,7 +28,7 @@
 }
 .control .invalid {
   color: red;
-  background-color: #f8d7da;
+  font-weight: bold;
 }
 
 .actions {

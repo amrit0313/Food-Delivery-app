@@ -2,37 +2,37 @@ import { useRef, useState } from "react";
 import classes from "./checkout.module.css";
 
 const isEmpty = (value) => value.trim() === "";
-const hasFiveChar = (value) => value.trim().length === 5;
+const hasTenChar = (value) => value.trim().length === 10;
 
 const Checkout = (props) => {
   const [formInputsValidity, setFOrmInputsValidity] = useState({
     name: true,
     street: true,
-    postal: true,
+    phone: true,
     city: true,
   });
   const nameInputRef = useRef();
   const streetInputRef = useRef();
-  const postalInputRef = useRef();
+  const phoneInputRef = useRef();
   const cityInputRef = useRef();
 
   const confirmHandler = (event) => {
     event.preventDefault();
 
     const enteredName = nameInputRef.current.value;
-    const enteredStreet = nameInputRef.current.value;
-    const enteredPostal = nameInputRef.current.value;
-    const enteredCity = nameInputRef.current.value;
+    const enteredStreet = streetInputRef.current.value;
+    const enteredPhone = phoneInputRef.current.value;
+    const enteredCity = cityInputRef.current.value;
 
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredCityIsValid = !isEmpty(enteredCity);
     const enteredStreedIsValid = !isEmpty(enteredStreet);
-    const enteredPostalIsValid = hasFiveChar(enteredPostal);
+    const enteredPhoneIsValid = hasTenChar(enteredPhone);
 
     setFOrmInputsValidity({
       name: enteredNameIsValid,
       street: enteredStreedIsValid,
-      postal: enteredPostalIsValid,
+      phone: enteredPhoneIsValid,
       city: enteredCityIsValid,
     });
 
@@ -40,7 +40,18 @@ const Checkout = (props) => {
       enteredNameIsValid &&
       enteredStreedIsValid &&
       enteredCityIsValid &&
-      enteredPostalIsValid;
+      enteredPhoneIsValid;
+
+    if (!formIsValid) {
+      return;
+    }
+
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      phone: enteredPhone,
+    });
   };
 
   const nameControl = `${classes.control}  ${
@@ -50,11 +61,11 @@ const Checkout = (props) => {
   const streetControl = `${classes.control}  ${
     formInputsValidity.street ? "" : classes.invalid
   }`;
-  const postalControl = `${classes.control}  ${
-    formInputsValidity.postal ? "" : classes.invalid
+  const phoneControl = `${classes.control}  ${
+    formInputsValidity.phone ? "" : classes.invalid
   }`;
   const cityControl = `${classes.control}  ${
-    formInputsValidity.postal ? "" : classes.invalid
+    formInputsValidity.city ? "" : classes.invalid
   }`;
 
   return (
@@ -69,10 +80,10 @@ const Checkout = (props) => {
         <input type="text" id="street" ref={streetInputRef} />
         {!formInputsValidity.street && <p>Please enter valid street</p>}
       </div>
-      <div className={postalControl}>
-        <label htmlFor="postal">Postal code</label>
-        <input type="text" id="postal" ref={postalInputRef} />
-        {!formInputsValidity.postal && <p>Please enter valid postal</p>}
+      <div className={phoneControl}>
+        <label htmlFor="phone">Phone Number</label>
+        <input type="text" id="phone" ref={phoneInputRef} />
+        {!formInputsValidity.phone && <p>Please enter valid number</p>}
       </div>
       <div className={cityControl}>
         <label htmlFor="city">City</label>
