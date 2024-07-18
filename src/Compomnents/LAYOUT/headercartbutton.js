@@ -6,7 +6,6 @@ import CartContext from "../../Store/cartContext";
 const CartButton = (props) => {
   const cartCtx = useContext(CartContext);
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
-  console.log(cartCtx);
   const numberOfItemsInCart = cartCtx.item.reduce((current, item) => {
     return current + item.amount;
   }, 0);

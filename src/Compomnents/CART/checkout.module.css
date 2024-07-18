@@ -26,9 +26,8 @@
   outline: none;
   border-color: #4d90fe;
 }
-.control .invalid {
-  color: red;
-  font-weight: bold;
+.control.invalid input {
+  border-color: red;
 }
 
 .actions {
